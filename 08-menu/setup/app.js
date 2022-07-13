@@ -1,3 +1,4 @@
+/* menu */
 const menu = [
   {
     id: 1,
@@ -71,4 +72,57 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "bison steak",
+    category: "dinner",
+    price: 22.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
+/* variables */
+const mealsEl = document.querySelector(`.section-center`);
+const filterBtns = document.querySelectorAll(`.filter-btn`);
+/* event listeners */
+filterBtns.forEach(btn => {
+  const category = btn.getAttribute(`data-id`);
+  btn.addEventListener(`click`, () => displayFilteredMeals(category));
+});
+/* functions */
+const addMeal = ({ img, title, price, desc, category }) => {
+  const article = document.createElement(`article`);
+  article.classList.add(`menu-item`);
+  article.classList.add(`${category}`);
+  article.classList.add(`all`);
+  const imgEl = document.createElement(`img`);
+  imgEl.src = img;
+  imgEl.alt = `menu item`;
+  imgEl.classList.add(`photo`);
+  article.appendChild(imgEl);
+  const mealInfo = document.createElement(`div`);
+  mealInfo.classList.add(`item-info`);
+  const header = document.createElement(`header`);
+  const mealNameEl = document.createElement(`h4`);
+  mealNameEl.textContent = title;
+  const priceEl = document.createElement(`h4`);
+  priceEl.textContent = price;
+  priceEl.classList.add(`price`);
+  header.appendChild(mealNameEl);
+  header.appendChild(priceEl);
+  mealInfo.appendChild(header);
+  const descriptionEl = document.createElement(`p`);
+  descriptionEl.classList.add(`item-text`);
+  descriptionEl.textContent = desc;
+  mealInfo.appendChild(descriptionEl);
+  article.appendChild(mealInfo);
+  mealsEl.appendChild(article);
+};
+const displayFilteredMeals = (category) => {
+  mealsEl.innerHTML = ``;
+  menu.forEach(meal => {
+    if (meal.category === category || category === `all`) addMeal(meal);
+  });
+};
+/* render initial meals */
+window.addEventListener(`DOMContentLoaded`,displayFilteredMeals(`all`))
