@@ -66,6 +66,7 @@ Global Styles
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: 300ms;
 }
 body {
   font-family: var(--ff-secondary);
@@ -223,19 +224,18 @@ Questions
 .question-btn:hover {
   transform: rotate(90deg);
 }
-.question-text {
-  padding: 1rem 0 1.5rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
 .question-text p {
   margin-bottom: 0;
 }
 /* hide text */
-/* .question-text {
-  display: none;
+.question-text {
+  height: 0;
+  overflow: hidden;
 }
 .show-text .question-text {
-  display: block;
+  height: auto;
+  padding: 1rem 0 1.5rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .minus-icon {
   display: none;
@@ -245,4 +245,4 @@ Questions
 }
 .show-text .plus-icon {
   display: none;
-} */
+} 
