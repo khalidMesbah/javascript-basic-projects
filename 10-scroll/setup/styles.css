@@ -213,9 +213,6 @@ nav {
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-/* .fixed-nav .links-container {
-  height: auto !important;
-} */
 .nav-header {
   display: flex;
   align-items: center;
@@ -239,9 +236,6 @@ nav {
   height: 0;
   overflow: hidden;
   transition: var(--transition);
-}
-.show-links {
-  height: 200px;
 }
 .links a {
   background: var(--clr-white);
@@ -365,7 +359,6 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
-
   visibility: hidden;
   z-index: -100;
 }

@@ -1,4 +1,5 @@
 # Vanilla JS Projects
+you are given the css and html of the projects already and you have to code the javascript part to make them fully functional 
 
 #### Enroll In The Course
 
