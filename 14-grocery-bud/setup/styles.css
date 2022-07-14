@@ -295,6 +295,9 @@ Grocery List
   margin: 0 0.15rem;
   transition: var(--transition);
 }
+i{
+  pointer-events: none;
+}
 .edit-btn {
   color: var(--clr-green-light);
 }
