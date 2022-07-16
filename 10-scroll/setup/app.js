@@ -1,20 +1,13 @@
-// Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
-// pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
-// offsetTop - A Number, representing the top position of the element, in pixels
-
 // ********** set date ************
-const date = document.getElementById(`date`);
-date.textContent = new Date().getFullYear();
+document.getElementById(`date`).textContent = new Date().getFullYear();
 // ********** close links ************
 const navToggleBtn = document.querySelector(`.nav-toggle`);
 const linksContainer = document.querySelector(`.links-container`);
 const links = document.querySelector(`.links`);
-
 navToggleBtn.addEventListener(`click`, () => {
     linksContainer.getBoundingClientRect().height ?
         linksContainer.style.height = `${0}px` :
         linksContainer.style.height = `${links.getBoundingClientRect().height}px`;
-
 });
 // ********** fixed navbar ************
 const topLink = document.querySelector(`.top-link`);
@@ -28,9 +21,9 @@ window.addEventListener(`scroll`, () => {
 // ********** smooth scroll ************
 const scrollLinksElements = document.querySelectorAll(`.scroll-link`);
 scrollLinksElements.forEach(link => {
-    link.addEventListener(`click`, (e) => {
+    link.addEventListener(`click`, e => {
         e.preventDefault();
-        const element = document.getElementById(e.currentTarget.getAttribute(`href`).slice(1));
+        const element = document.getElementById(link.getAttribute(`href`).slice(1));
         const fixedNav = navbar.classList.contains(`fixed-nav`);
         const containerHeight = linksContainer.getBoundingClientRect().height;
         const navbarHeight = navbar.getBoundingClientRect().height;
@@ -38,7 +31,10 @@ scrollLinksElements.forEach(link => {
         let position = element.offsetTop - navbarHeight;
         if (!fixedNav) position -= navbarHeight;
         if (navbarHeight > 82) position += containerHeight;
-        window.scrollTo(0, position);
+        window.scrollTo({
+            left: 0,
+            top: position,
+            behavior: "smooth"
+        });
     });
 });
-// select links
